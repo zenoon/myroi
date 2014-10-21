@@ -35,7 +35,7 @@ public class RoiCalc {
 		}
 		return next;
 	}
-	private static double calcNextYear(double now, double cycleRate2) {
+	protected static double calcNextYear(double now, double cycleRate2) {
 		
 		double next = now *(1+cycleRate2);
 		return next;

@@ -11,7 +11,7 @@ public class Way extends RoiCalc{
 	/*
 	 * 每年恒定投入的资金
 	 */
-	private double cycleIn ;
+	protected double cycleIn ;
 	/**
 	 * N年后的总资产
 	 */
@@ -19,11 +19,11 @@ public class Way extends RoiCalc{
 	/**
 	 * 每年恒定的投资收益率ROI
 	 */
-	private double cycleRoi ;
+	protected double cycleRoi ;
 	/**
 	 * 计划投资的年限
 	 */
-	private int cycle ;
+	protected int cycle ;
 	/**
 	 * 每年恒定的通货膨胀率
 	 */
@@ -55,8 +55,9 @@ public class Way extends RoiCalc{
 	public double calcNCycleRate(){
 		
 		long rs = Math.round(this.result);
-		double rate = Math.round(rs*100/(this.cycleIn*this.cycle));
-		System.out.println("第"+cycle+"次后："+rs + "    总收益率   " +rate + "%");
+		double sum = (this.cycleIn*this.cycle);
+		double rate = Math.round((rs-sum)/sum*100);
+		System.out.println("第"+cycle+"次后，     投入"+sum+"，    总资产"+rs + "，    总收益率   " +rate + "%");
 		System.out.println();
 		return rate;
 	}
