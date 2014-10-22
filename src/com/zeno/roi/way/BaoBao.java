@@ -1,39 +1,45 @@
 package com.zeno.roi.way;
 
+import com.zeno.roi.Constant;
 import com.zeno.roi.IWayRoi;
 
 /**
  * @author zeno
- * ������Ͷ�ʷ���
+ * 宝宝类投资方向
  */
-public class BaoBao extends Way implements IWayRoi{
+public class BaoBao extends WaySon implements IWayRoi{
+	/**
+	 * 宝宝类理财年化收益率
+	 */
 	public static double cycleRoiYear = 0.05;
+	/**
+	 * 默认的计算每天收益率的分母
+	 */
+	private static int per = Constant.DAYS;
+	
 	/**	 
-	 * @param cycle
-	 * @param cycleIn
-	 * @param cycleRoiYear
+	 * @param cycle 计划总共投资的周期次数
+	 * @param cycleIn 每个投资周期追加的投资数
+	 * @param cycleCalc 计算收益的周期数，例如 720天
+	 * @param per 计算每天收益率的分母
 	 * @see Way
 	 */
-	public BaoBao(int cycle, double cycleIn,int per) {
-		super(cycleIn, cycle, cycleRoiYear/per);
+	public BaoBao(int cycle, double cycleIn,int cycleCalc,int per) {
+		super(cycle, cycleIn, cycleCalc, cycleRoiYear/per);
+		
+	}
+	/**	 
+	 * @param cycle 计划总共投资的周期次数
+	 * @param cycleIn 每个投资周期追加的投资数
+	 * @param cycleCalc 计算收益的周期数，例如 720天
+	 * @see Way
+	 */
+	public BaoBao(int cycle, double cycleIn,int cycleCalc) {
+		super(cycle, cycleIn, cycleCalc, cycleRoiYear/per);		
 		
 	}
 
-	@Override
-	public double calcNCycleAfter() {
-		double now = cycleIn;
-		double next = 0;
-		for(int i=1;i<cycle+1;i++){			
-			
-			next = calcNextYear(now,cycleRoi) ;
-			if(i<10 || i%10==0){
-				System.out.print("��"+i+"��  --- ��"+Math.round(now)+" ��   "+Math.round(next));
-				double rate = Math.round((next-(cycleIn*i))/(cycleIn*i)*100);
-				System.out.println("�� Ŀǰ��������   " +rate +" %");
-			}
-			now = next;
-		}
-		return next;
-	}
+	
+	
 
 }

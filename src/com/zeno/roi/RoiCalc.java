@@ -2,40 +2,48 @@ package com.zeno.roi;
 /**
  * 
  * @author zeno
- * Í¶×ÊÊÕÒæÂÊ¼ÆËãÆ÷
- * ¼ÆËãÄê»ù±¾ÊÕÈë¡¢ÄêÍ¶×ÊÊÕÒæÂÊ Ò»¶¨µÄÇé¿öÏÂ£¬nÄêµÄÊÕÒæ
+ * æŠ•èµ„æ”¶ç›Šç‡è®¡ç®—å™¨
+ * è®¡ç®—å¹´åŸºæœ¬æ”¶å…¥ã€å¹´æŠ•èµ„æ”¶ç›Šç‡ ä¸€å®šçš„æƒ…å†µä¸‹ï¼Œnå¹´çš„æ”¶ç›Š
  */
 public class RoiCalc {
-
-//	private static double cycleIn = 10;
-//	private static double result = 0;
-//	private static double cycleRate = 0.3;
-//	private static int cycles = 10;
-//	
-//	
-//	public static void main(String[] args) {
-//		result = calcNCycleAfter(cycles,cycleIn,cycleRate);
-//		long rs = Math.round(result);
-//		double rate = rs/(cycleIn*cycles);
-//		System.out.println("µÚ"+cycles+"Äêºó£º"+rs + " ÊÕÒæÂÊ" +rate);
-//	}
 	
-	public static double calcNCycleAfter(int cycles,double cycleIn,double cycleRate){
+	/**
+	 * è®¡ç®— N ä¸ªæ”¶ç›Šå‘¨æœŸåçš„æ€»èµ„äº§,åªé€‚ç”¨æŠ•èµ„å‘¨æœŸä¸æ”¶ç›Šå‘¨æœŸç›¸åŒçš„æƒ…å†µï¼Œcycles == cycleCalc
+	 * @param cycleIn
+	 * @param cycleCalc
+	 * @param cycleRate
+	 * @return 
+	 */
+	public static double calcNCycleAfter(double cycleIn,int cycleCalc,double cycleRate){
 		double now =  cycleIn;
 		double next = 0;
-		for(int i=1;i<cycles+1;i++){			
+		for(int i=1;i<cycleCalc+1;i++){
 			
-			next = calcNextYear(now,cycleRate) ;
-			if(i<10 || i%10==0){
-				System.out.print("µÚ"+i+"´Î  --- ´Ó"+Math.round(now)+" µ½   "+Math.round(next));
-				double rate = Math.round((next-(cycleIn*i))/(cycleIn*i)*100);
-				System.out.println("£¬ Ä¿Ç°×ÜÊÕÒæÂÊ   " +rate +" %");
-			}
+			next = calcNextCycle(now,cycleRate) ;
+			if(Constant.isPrint )
+				if(cycleCalc < Constant.MONTH*2){
+					System.out.print("ç¬¬"+i+"æ¬¡  --- ä»"+Math.round(now)+" åˆ°   "+Math.round(next));
+					double rate = Math.round( (next - (cycleIn * i) ) / (cycleIn*i) * Constant.PERCENT);
+					System.out.println("ï¼Œ ç›®å‰æ€»æ”¶ç›Šç‡   " +rate +" %");
+				}else if(cycleCalc % Constant.MONTH == 0 || cycleCalc % Constant.DAYS == 0){
+					System.out.print("ç¬¬"+i+"æ¬¡  --- ä»"+Math.round(now)+" åˆ°   "+Math.round(next));
+					double rate = Math.round( (next - (cycleIn * i) ) / (cycleIn*i) * Constant.PERCENT);
+					System.out.println("ï¼Œ ç›®å‰æ€»æ”¶ç›Šç‡   " +rate +" %");
+				
+					
+				}
+				
 			now = next + cycleIn;
 		}
 		return next;
 	}
-	protected static double calcNextYear(double now, double cycleRate2) {
+	/**
+	 * è®¡ç®—ä¸‹ä¸ªå‘¨æœŸåçš„æ€»èµ„äº§
+	 * @param now
+	 * @param cycleRate2
+	 * @return
+	 */
+	protected static double calcNextCycle(double now, double cycleRate2) {
 		
 		double next = now *(1+cycleRate2);
 		return next;

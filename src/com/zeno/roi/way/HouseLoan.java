@@ -4,11 +4,18 @@ import com.zeno.roi.IWayRoi;
 
 /**
  * @author zeno
- * ·¿²úÍ¶×Ê·½ÏòµÄ
- * ´û¿îÂò·¿
+ * æˆ¿äº§æŠ•èµ„æ–¹å‘çš„
+ * è´·æ¬¾ä¹°æˆ¿
  */
 public class HouseLoan extends Way implements IWayRoi{
+	/**
+	 * æˆ¿äº§å¹´åæ”¶ç›Šç‡
+	 */
 	public static double cycleRoiYear = 0.2;
+	/**
+	 * æˆ¿äº§è´·æ¬¾åˆ©ç‡
+	 */
+	public static double loanRate = 0.2;
 	/**	 
 	 * @param cycle
 	 * @param cycleIn
@@ -16,7 +23,7 @@ public class HouseLoan extends Way implements IWayRoi{
 	 * @see Way
 	 */
 	public HouseLoan(int cycle, double cycleIn) {
-		super(cycleIn, cycle, cycleRoiYear);
+		super(cycle, cycleIn, cycle, cycleRoiYear);
 		
 	}
 

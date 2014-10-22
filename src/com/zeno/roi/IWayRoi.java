@@ -4,7 +4,7 @@
 package com.zeno.roi;
 /**
  * @author zeno
- * 计算自己收益的接口
+ * 璁＄畻N涓懆鏈熷悗鏀剁泭鐨勬帴鍙ｇ被
  */
 public interface IWayRoi {
 	public double calcNCycleAfter();;

@@ -4,10 +4,10 @@ import com.zeno.roi.IWayRoi;
 
 /**
  * @author zeno
- * ·¿²úÍ¶×Ê·½ÏòµÄ
- * È«¿îÂò·¿
+ * æˆ¿äº§æŠ•èµ„æ–¹å‘çš„
+ * å…¨æ¬¾ä¹°æˆ¿
  */
-public class House extends Way implements IWayRoi{
+public class House extends WaySon implements IWayRoi{
 	public static double cycleRoiYear = 0.2;
 	/**	 
 	 * @param cycle
@@ -15,8 +15,8 @@ public class House extends Way implements IWayRoi{
 	 * @param cycleRoiYear
 	 * @see Way
 	 */
-	public House(int cycle, double cycleIn) {
-		super(cycleIn, cycle, cycleRoiYear);
+	public House(int cycle, double cycleIn,int cycleCalc) {
+		super(cycle, cycleIn, cycleCalc, cycleRoiYear);
 		
 	}
 
