@@ -33,7 +33,7 @@ public class WaySon extends Way implements IWayRoi{
 			
 			next = calcNextCycle(now,cycleRoi) ;
 			if(Constant.isPrint)
-				if(i<Constant.MONTH || i % Constant.MONTH ==0){
+				if(i % Constant.DAYS ==0){
 					System.out.print("第"+i+"次  --- 从"+Math.round(now)+" 到   "+Math.round(next));
 					double rate = Math.round( (next-sum ) / sum * Constant.PERCENT);
 					System.out.println("， 目前总收益率   " +rate +" %");

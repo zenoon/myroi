@@ -21,14 +21,14 @@ public class Main {
 		
 
 		//股市
-//		cycle = year * Constant.MONTH;//10年，120月，3600天
-//		cycleIn = Constant.MONEY;
-//		per = Constant.MONTH;//用于换算年化收益率-》周期收益率
-//		Way stock = new Stock(cycle,cycleIn,per);
-//		stock.calcNCycleAfter();
-//		System.out.print("【股票投资】【"+year+"年】");
-//		stock.calcNCycleRate();
-//		System.out.println();
+		cycle = year * Constant.MONTH;//10年，120月，3600天
+		cycleIn = Constant.MONEY;
+		per = Constant.MONTH;//用于换算年化收益率-》周期收益率
+		Way stock = new Stock(cycle,cycleIn,per);
+		stock.calcNCycleAfter();
+		System.out.print("【股票投资】【"+year+"年】");
+		stock.calcNCycleRate();
+		System.out.println();
 		
 		//银行定期				
 		cycle = year;
@@ -41,15 +41,15 @@ public class Main {
 		
 		
 		//宝宝理财
-//		cycle = year * Constant.MONTH;//十二个月
-//		cycleIn = Constant.MONEY;//每个月投入
-//		cycleCalc = year * Constant.DAYS;//3600 天==10年
-//		per = Constant.DAYS;//用于计算每天计算收益
-//		Way baobao = new BaoBao(cycle,cycleIn,cycleCalc,per);
-//		baobao.calcNCycleAfter();
-//		System.out.print("【宝宝理财】【"+year+"年】");
-//		baobao.calcNCycleRate();
-//		System.out.println();
+		cycle = year * Constant.MONTH;//十二个月
+		cycleIn = Constant.MONEY;//每个月投入
+		cycleCalc = year * Constant.DAYS;//3600 天==10年
+		per = Constant.DAYS;//用于计算每天计算收益
+		Way baobao = new BaoBao(cycle,cycleIn,cycleCalc,per);
+		baobao.calcNCycleAfter();
+		System.out.print("【宝宝理财】【"+year+"年】");
+		baobao.calcNCycleRate();
+		System.out.println();
 
 		//全款房产
 		cycle = 1;//一次性投入

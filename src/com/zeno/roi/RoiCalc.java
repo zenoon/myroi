@@ -17,21 +17,26 @@ public class RoiCalc {
 	public static double calcNCycleAfter(double cycleIn,int cycleCalc,double cycleRate){
 		double now =  cycleIn;
 		double next = 0;
+		boolean isIndex = false;
 		for(int i=1;i<cycleCalc+1;i++){
 			
 			next = calcNextCycle(now,cycleRate) ;
 			if(Constant.isPrint )
-				if(cycleCalc < Constant.MONTH*2){
-					System.out.print("第"+i+"次  --- 从"+Math.round(now)+" 到   "+Math.round(next));
-					double rate = Math.round( (next - (cycleIn * i) ) / (cycleIn*i) * Constant.PERCENT);
-					System.out.println("， 目前总收益率   " +rate +" %");
-				}else if(cycleCalc % Constant.MONTH == 0 || cycleCalc % Constant.DAYS == 0){
-					System.out.print("第"+i+"次  --- 从"+Math.round(now)+" 到   "+Math.round(next));
-					double rate = Math.round( (next - (cycleIn * i) ) / (cycleIn*i) * Constant.PERCENT);
-					System.out.println("， 目前总收益率   " +rate +" %");
-				
-					
+				if(cycleCalc < Constant.MONTH){
+					isIndex = true;
+				}else if(cycleCalc > Constant.DAYS && cycleCalc % Constant.DAYS == 0){
+					isIndex = true;
+				}else if(cycleCalc > Constant.MONTH && cycleCalc% Constant.MONTH == 0 ){
+					isIndex = true;
 				}
+				
+				if(isIndex){
+					System.out.print("第"+i+"次  --- 从"+Math.round(now)+" 到   "+Math.round(next));
+					double rate = Math.round( (next - (cycleIn * i) ) / (cycleIn*i) * Constant.PERCENT);
+					System.out.println("， 目前总收益率   " +rate +" %");
+				}
+			
+			
 				
 			now = next + cycleIn;
 		}
