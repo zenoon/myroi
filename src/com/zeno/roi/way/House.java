@@ -18,11 +18,6 @@ public class House extends WaySon implements IWayRoi{
 	public House(int cycle, double cycleIn,int cycleCalc) {
 		super(cycle, cycleIn, cycleCalc, cycleRoiYear);
 		
-	}
-
-	@Override
-	public double calcNCycleAfter() {
-		return super.calcNCycleAfter();
-	}
+	}	
 
 }

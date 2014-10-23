@@ -15,7 +15,7 @@ public class BaoBao extends WaySon implements IWayRoi{
 	/**
 	 * 默认的计算每天收益率的分母
 	 */
-	private static int per = Constant.DAYS;
+	private static int per = Constant.YEAR_DAYS;
 	
 	/**	 
 	 * @param cycle 计划总共投资的周期次数

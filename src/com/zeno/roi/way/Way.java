@@ -6,6 +6,7 @@ import com.zeno.roi.RoiCalc;
 /**
  * @author zeno
  * 不同的投资方向的基类
+ * RoiCalc的子类
  */
 public class Way extends RoiCalc{
 	/**
@@ -36,11 +37,7 @@ public class Way extends RoiCalc{
 	/**
 	 * N个周期的总投资收益率
 	 */
-	protected double rate ;
-	/**
-	 * 基本恒定的年通货膨胀率
-	 */
-	private static final double INFLATION_RATE = 0.05;
+	protected double rate ;	
 	/**
 	 * 是否考虑通货膨胀率
 	 */
@@ -81,17 +78,17 @@ public class Way extends RoiCalc{
 		//考虑通货膨胀的情况
 		if(isInflation){
 			
-			if(cycleCalc % Constant.DAYS == 0){
-				for(int i = 0; i < cycleCalc / Constant.DAYS; i++){
-					sumInflation = sumInflation*(1+INFLATION_RATE);
+			if(cycleCalc % Constant.YEAR_DAYS == 0){
+				for(int i = 0; i < cycleCalc / Constant.YEAR_DAYS; i++){
+					sumInflation = sumInflation*(1+Constant.INFLATION_RATE);
 				}	
-			}else if(cycleCalc %Constant.MONTH == 0){
-				for(int i=0; i < cycleCalc / Constant.MONTH; i++){
-					sumInflation = sumInflation*(1+INFLATION_RATE);
+			}else if(cycleCalc %Constant.YEAR_MONTHS == 0){
+				for(int i=0; i < cycleCalc / Constant.YEAR_MONTHS; i++){
+					sumInflation = sumInflation*(1+Constant.INFLATION_RATE);
 				}	
 			}else if(cycleCalc % 1 == 0){
 				for(int i=0;i<cycleCalc;i++){
-					sumInflation = sumInflation*(1+INFLATION_RATE);
+					sumInflation = sumInflation*(1+Constant.INFLATION_RATE);
 				}
 			}
 			sumInflation = Math.round(sumInflation);
@@ -100,7 +97,7 @@ public class Way extends RoiCalc{
 		
 		rate = Math.round((rs-sum) / sum * Constant.PERCENT);		
 		
-		System.out.println("投入"+ sum +" 通胀 "+sumInflation+"，    总资产"+rs + "，    总收益率   " +rate + "%，    扣除通胀总收益率   " +rateInflation + "%");
+		System.out.println(":投入("+ sum +")，通胀("+sumInflation+")， 现总资产("+rs + ")， 总收益率(" +rate + "%)，扣除通胀总收益率(" +rateInflation + "%)");
 		
 		return rate;
 	}
