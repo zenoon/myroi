@@ -30,9 +30,9 @@ public class RoiCalc {
 		double sum = now;
 		for(int i=1;i<cycleCalc+1;i++){
 			
-			next = calcNextCycle(now,cycleRate) ;
-			sum += cycleIn;			
-			printLog(cycleCalc, i, next, now, cycleIn,sum);			
+			next = calcNextCycle(now,cycleRate) ;						
+			printLog(cycleCalc, i, next, now, cycleIn,sum);	
+			sum += cycleIn;
 			now = next + cycleIn;
 		}
 		reset();

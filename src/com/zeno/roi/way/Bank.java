@@ -22,9 +22,4 @@ public class Bank extends Way implements IWayRoi{
 		
 	}
 
-	@Override
-	public double calcNCycleAfter() {
-		return super.calcNCycleAfter();
-	}
-
 }
